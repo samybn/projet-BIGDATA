@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DétectInfo | Analyseur de Fake News</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;600;800&display=swap" rel="stylesheet">
+</head>
+<body class="dark-theme">
+    <div class="app-container">
+        <header class="app-header">
+            <div class="logo">
+                <h1>Détect<span class="accent">Info</span></h1>
+            </div>
+            
+            <div class="account-section" id="account-section">
+                <!-- Logged out state -->
+                <div id="auth-buttons">
+                    <button class="btn-text" id="open-login">Sign In</button>
+                    <button class="btn-primary" id="open-signup">Sign Up</button>
+                </div>
+                <!-- Logged in state -->
+                <div id="user-profile" class="hidden">
+                    <span id="display-username">Username</span>
+                    <button class="icon-btn" id="logout-btn" title="Déconnexion">
+                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" width="20">
+                            <path d="M15 12H3M3 12L7 16M3 12L7 8M9 4V3C9 2.44772 9.44772 2 10 2H20C20.5523 2 21 2.44772 21 3V21C21 21.5523 20.5523 22 20 22H10C9.44772 22 9 21.5523 9 21V20" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </header>
+
+        <main class="chat-container">
+            <div class="welcome-section" id="welcome-section">
+                <h2>Bievenue sur DétectInfo</h2>
+                <p>Analysez instantanément la véracité d'un texte ou d'un titre d'actualité.</p>
+            </div>
+
+            <div class="results-history" id="results-history"></div>
+        </main>
+
+        <footer class="input-area">
+            <div class="input-wrapper">
+                <textarea id="news-input" placeholder="Collez votre texte ici pour analyse..." rows="1"></textarea>
+                <button id="analyze-btn" class="send-btn" disabled>
+                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M7 11L12 6L17 11M12 18V7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </button>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Auth Modal -->
+    <div id="auth-modal" class="overlay hidden">
+        <div class="modal-content">
+            <button class="close-modal">&times;</button>
+            <h2 id="modal-title">Connexion</h2>
+            <form id="auth-form">
+                <div class="input-group">
+                    <label for="username">Utilisateur</label>
+                    <input type="text" id="username" required>
+                </div>
+                <div class="input-group">
+                    <label for="password">Mot de passe</label>
+                    <input type="password" id="password" required>
+                </div>
+                <button type="submit" class="btn-primary full-width" id="auth-submit">Se connecter</button>
+                <p class="switch-auth">Pas encore de compte ? <a href="#" id="switch-to-signup">S'inscrire</a></p>
+            </form>
+        </div>
+    </div>
+
+    <!-- Loading Overlay -->
+    <div id="loading-overlay" class="overlay hidden">
+        <div class="loader">
+            <div class="spinner"></div>
+            <p>Analyse par DétectInfo...</p>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
