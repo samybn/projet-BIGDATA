@@ -206,6 +206,7 @@ body {
 
 .result-card.true { border-color: var(--true-color); }
 .result-card.fake { border-color: var(--fake-color); }
+.result-card.unknown { border-color: var(--text-secondary); }
 
 .status-label {
     font-weight: 800;
@@ -228,6 +229,7 @@ body {
 
 .true .confidence-bar-fill { background: var(--true-color); }
 .fake .confidence-bar-fill { background: var(--fake-color); }
+.unknown .confidence-bar-fill { background: var(--text-secondary); }
 
 /* Input */
 .input-area {

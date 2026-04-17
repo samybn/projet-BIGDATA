@@ -16,8 +16,8 @@ DétectInfo est une solution complète d'analyse de véracité d'informations ba
 ### Intelligence Artificielle
 - **Core Architecture** : Mamba Block (Custom Implementation)
 - **Framework** : PyTorch
+- **Optimisation** : Algorithme Génétique (Métaheuristique) pour le réglage des hyperparamètres.
 - **Traitement de texte (NLP)** : Scikit-learn (TF-IDF Vectorization), NLTK (Stopwords)
-- **Optimisation** : Hyperparameter Search (RandomizedSearch concept)
 
 ### Web & Backend
 - **Framework Web** : Flask

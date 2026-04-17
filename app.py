@@ -134,6 +134,16 @@ def predict():
     
     try:
         X = vectorizer.transform([cleaned]).toarray()
+        
+        # Check if out-of-vocabulary (all words in text are unknown)
+        if X.sum() == 0:
+            return jsonify({
+                'prediction': "Je suis désolé, je ne peux pas traiter cette information car elle ne ressemble à rien de ce que j'ai appris.",
+                'confidence': 0,
+                'is_true': None,
+                'unknown': True
+            })
+
         X_t = torch.tensor(X, dtype=torch.float32).unsqueeze(1)
         
         with torch.no_grad():
@@ -141,14 +151,25 @@ def predict():
             probs = torch.softmax(outputs, dim=1)
             pred_class = outputs.argmax(dim=1).item()
         
+        confidence = float(probs[0, pred_class].item())
+        
+        # Check for low confidence
+        if confidence < 0.7:
+             return jsonify({
+                'prediction': "Je suis désolé, ma confiance est trop faible pour juger cette information.",
+                'confidence': confidence,
+                'is_true': None,
+                'unknown': True
+            })
+
         # Labels updated according to user request
         label = "Real News" if pred_class == 1 else "Fake News"
-        confidence = float(probs[0, pred_class].item())
         
         return jsonify({
             'prediction': label,
             'confidence': confidence,
-            'is_true': bool(pred_class == 1)
+            'is_true': bool(pred_class == 1),
+            'unknown': False
         })
     except Exception as e:
         return jsonify({'error': f"Erreur de prédiction : {str(e)}"}), 500
