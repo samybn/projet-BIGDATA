@@ -1,3 +1,4 @@
+
 # DétectInfo - Détecteur de Fake News (Mamba AI)
 
 DétectInfo est une solution complète d'analyse de véracité d'informations basée sur l'architecture de pointe **Mamba (State Space Model)**. Le projet combine un modèle de Deep Learning haute performance avec une interface web moderne et sécurisée.

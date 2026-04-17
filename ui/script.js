@@ -5,13 +5,13 @@ document.addEventListener('DOMContentLoaded', () => {
     const historyContainer = document.getElementById('results-history');
     const welcomeSection = document.getElementById('welcome-section');
     const loadingOverlay = document.getElementById('loading-overlay');
-    
+
     // Auth Elements
     const authButtons = document.getElementById('auth-buttons');
     const userProfile = document.getElementById('user-profile');
     const displayUsername = document.getElementById('display-username');
     const logoutBtn = document.getElementById('logout-btn');
-    
+
     // Modal Elements
     const authModal = document.getElementById('auth-modal');
     const authForm = document.getElementById('auth-form');
@@ -19,7 +19,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const authSubmit = document.getElementById('auth-submit');
     const switchAuthLink = document.getElementById('switch-to-signup');
     const closeModal = document.querySelector('.close-modal');
-    
+
     let isLoginMode = true;
 
     // --- Init ---
@@ -57,14 +57,14 @@ document.addEventListener('DOMContentLoaded', () => {
         isLoginMode = loginMode;
         modalTitle.textContent = isLoginMode ? "Connexion" : "Inscription";
         authSubmit.textContent = isLoginMode ? "Se connecter" : "S'inscrire";
-        switchAuthLink.parentElement.innerHTML = isLoginMode ? 
+        switchAuthLink.parentElement.innerHTML = isLoginMode ?
             `Pas encore de compte ? <a href="#" id="switch-to-signup">S'inscrire</a>` :
             `Déjà un compte ? <a href="#" id="switch-to-login">Se connecter</a>`;
-        
+
         // Re-attach listeners to dynamic links
         const link = document.getElementById(isLoginMode ? 'switch-to-signup' : 'switch-to-login');
         link.onclick = (e) => { e.preventDefault(); openModal(!isLoginMode); };
-        
+
         authModal.classList.remove('hidden');
     }
 
@@ -97,7 +97,7 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     // --- Prediction Handlers ---
-    input.addEventListener('input', function() {
+    input.addEventListener('input', function () {
         this.style.height = 'auto';
         this.style.height = (this.scrollHeight) + 'px';
         analyzeBtn.disabled = !this.value.trim();
@@ -118,7 +118,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         if (welcomeSection) welcomeSection.style.display = 'none';
         addMessage(text, 'user');
-        
+
         input.value = '';
         input.style.height = 'auto';
         analyzeBtn.disabled = true;
